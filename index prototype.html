@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExitPortal | Reclaim $12,000 From Unpaid Offboarding Work</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-light: rgba(37, 99, 235, 0.1);
+            --primary-dark: #1d4ed8;
+            --secondary-color: #3b82f6;
+            --bg-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.92);
+            --text-color: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: rgba(226, 232, 240, 0.6);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            --border-radius: 24px;
+            --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --gradient-primary: linear-gradient(135deg, #2563eb, #3b82f6);
+            --gradient-dark: linear-gradient(135deg, #1e40af, #2563eb);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Premium Background */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.03) 0%, transparent 50%),
+                linear-gradient(135deg, #f8fafc 0%, #f0f9ff 100%);
+            z-index: -2;
+        }
+
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            z-index: 1000;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Creative Logo: Folder + Portal */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            position: relative;
+        }
+
+        /* Folder Body */
+        .folder-body {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        /* Folder Tab */
+        .folder-tab {
+            position: absolute;
+            top: -8px;
+            left: 12px;
+            width: 36px;
+            height: 16px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 8px 8px 0 0;
+            z-index: 2;
+        }
+
+        /* Portal Effect Inside Folder */
+        .portal-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, transparent 70%),
+                conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: portalRotate 8s linear infinite;
+            box-shadow: 
+                0 0 0 2px rgba(255, 255, 255, 0.3),
+                0 0 0 4px rgba(37, 99, 235, 0.2),
+                0 0 20px rgba(37, 99, 235, 0.4);
+        }
+
+        @keyframes portalRotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Portal Opening Lines */
+        .portal-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1px;
+        }
+
+        .portal-line:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .portal-line:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(90deg);
+        }
+
+        .portal-line:nth-child(4) {
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .header-cta {
+            padding: 14px 32px;
+            border-radius: 14px;
+            background: var(--gradient-primary);
+            color: white;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Hero Section - Centered */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 180px 5% 100px;
+            position: relative;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            margin-bottom: 60px;
+        }
+
+        .hero-title {
+            font-size: 72px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(90deg, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        /* Pain Teaser Card - Perfectly Positioned */
+        .pain-teaser-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+        }
+
+        .pain-teaser {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            border-left: 6px solid var(--danger-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pain-teaser::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(239, 68, 68, 0.03), transparent);
+        }
+
+        .pain-teaser h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: var(--danger-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .pain-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pain-stat {
+            text-align: center;
+            flex: 0 1 auto;
+            padding: 0 20px;
+        }
+
+        .pain-number {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--danger-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-feature-settings: "tnum";
+        }
+
+        .pain-label {
+            font-size: 15px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pain-description {
+            color: var(--text-secondary);
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        /* Relief Section - Perfectly Positioned */
+        .relief-container {
+            position: relative;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+        }
+
+        .relief-section {
+            padding: 50px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(37, 99, 235, 0.05));
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .relief-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-5.523-4.477-10-10-10s-10 4.477-10 10 4.477 10 10 10 10-4.477 10-10zm-10 8c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .relief-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 40px;
+            color: var(--success-color);
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .relief-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .relief-stat {
+            text-align: center;
+            flex: 0 1 auto;
+            padding: 0 20px;
+        }
+
+        .relief-number {
+            font-size: 56px;
+            font-weight: 800;
+            color: var(--success-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-feature-settings: "tnum";
+        }
+
+        .relief-label {
+            font-size: 16px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .relief-benefits {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .benefit-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: rgba(16, 185, 129, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--success-color);
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .benefit-text h4 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--text-color);
+            font-weight: 700;
+        }
+
+        .benefit-text p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* CTA Buttons - Perfectly Centered */
+        .cta-container {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 22px 48px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            text-decoration: none;
+            border: none;
+            letter-spacing: -0.2px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 45px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 20px 46px;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Problem Section */
+        .section {
+            padding: 140px 5%;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 52px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 22px;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 100px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* Financial Loss Calculator */
+        .loss-calculator {
+            max-width: 1000px;
+            margin: 0 auto 100px;
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 60px;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: var(--text-color);
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .calculator-inputs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .input-group input {
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            background: white;
+            font-size: 17px;
+            color: var(--text-color);
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .calculator-result {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.05), rgba(239, 68, 68, 0.1));
+            border-radius: var(--border-radius);
+            padding: 50px;
+            text-align: center;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .result-title {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .result-amount {
+            font-size: 84px;
+            font-weight: 900;
+            color: var(--danger-color);
+            margin-bottom: 15px;
+            line-height: 1;
+            font-feature-settings: "tnum";
+            letter-spacing: -2px;
+        }
+
+        .result-description {
+            font-size: 19px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Emotional Impact */
+        .emotional-impact {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .impact-visual {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .impact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .impact-item {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+
+        .impact-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 16px;
+            background: rgba(239, 68, 68, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--danger-color);
+            font-size: 28px;
+        }
+
+        .impact-content h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            font-weight: 800;
+        }
+
+        .impact-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 17px;
+        }
+
+        /* Solution Section */
+        .solution-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .solution-visual {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: var(--glass-border);
+            border-radius: var(--border-radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .solution-visual-icon {
+            font-size: 120px;
+            color: var(--success-color);
+            margin-bottom: 40px;
+        }
+
+        .solution-visual h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: var(--text-color);
+            font-weight: 800;
+        }
+
+        .solution-visual p {
+            color: var(--text-secondary);
+            font-size: 18px;
+            max-width: 400px;
+            line-height: 1.6;
+        }
+
+        .solution-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .solution-stat {
+            text-align: center;
+            padding: 30px;
+            background: rgba(16, 185, 129, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(16, 185, 129, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .solution-stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--success-color);
+            line-height: 1;
+            margin-bottom: 10px;
+            font-feature-settings: "tnum";
+        }
+
+        .solution-label {
+            font-size: 17px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        /* Waitlist Section */
+        .waitlist {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 140px 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .waitlist::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M50 50c0-13.807-11.193-25-25-25S0 36.193 0 50s11.193 25 25 25 25-11.193 25-25zm-25 23c-12.703 0-23-10.297-23-23s10.297-23 23-23 23 10.297 23 23-10.297 23-23 23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .waitlist .section-title {
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+
+        .waitlist .section-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+
+        .waitlist-form {
+            max-width: 900px;
+            margin: 80px auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .form-input {
+            padding: 22px;
+            border-radius: 16px;
+            border: none;
+            background: rgba(255, 255, 255, 0.95);
+            font-size: 17px;
+            color: #1e293b;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+
+        .form-submit {
+            padding: 22px 60px;
+            border-radius: 16px;
+            border: none;
+            background: white;
+            color: #2563eb;
+            font-size: 19px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-top: 1px solid var(--border-color);
+            padding: 100px 5% 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .footer-logo .logo-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer-logo .logo-text {
+            font-size: 24px;
+        }
+
+        .footer-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 60px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 60px;
+            }
+            
+            .section-title {
+                font-size: 44px;
+            }
+            
+            .calculator-inputs {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .emotional-impact,
+            .solution-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .form-group {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .hero-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 36px;
+            }
+            
+            .pain-stats,
+            .relief-stats,
+            .solution-stats {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .relief-benefits {
+                grid-template-columns: 1fr;
+            }
+            
+            .calculator-inputs {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .header-cta {
+                padding: 12px 24px;
+                font-size: 15px;
+            }
+            
+            .btn {
+                padding: 20px 32px;
+                font-size: 16px;
+                width: 100%;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pain-number,
+            .relief-number,
+            .solution-number {
+                font-size: 40px;
+            }
+            
+            .result-amount {
+                font-size: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Background -->
+    <div class="background-overlay"></div>
+    <div class="grid-pattern"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <div class="folder-body">
+                    <div class="folder-tab"></div>
+                    <div class="portal-effect"></div>
+                    <div class="portal-line"></div>
+                    <div class="portal-line"></div>
+                    <div class="portal-line"></div>
+                    <div class="portal-line"></div>
+                </div>
+            </div>
+            <div class="logo-text">ExitPortal</div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#problem">The $12k Drain</a></li>
+                <li><a href="#solution">Your Solution</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#waitlist">Join Waitlist</a></li>
+            </ul>
+        </nav>
+
+        <a href="#waitlist" class="header-cta">Reclaim Your $12k →</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Every year, freelancers silently lose
+                    <span class="hero-gradient-text">$12,000 to unpaid offboarding work.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    The hidden cost of "just one more thing" that's slowly draining your business and burning you out.
+                </p>
+            </div>
+            
+            <!-- Pain Teaser -->
+            <div class="pain-teaser-container">
+                <div class="pain-teaser">
+                    <h3><i class="fas fa-exclamation-triangle"></i> The Silent $12,000 Drain</h3>
+                    <div class="pain-stats">
+                        <div class="pain-stat">
+                            <div class="pain-number">53%</div>
+                            <div class="pain-label">of freelancers</div>
+                        </div>
+                        <div class="pain-stat">
+                            <div class="pain-number">18 hrs</div>
+                            <div class="pain-label">unpaid per project</div>
+                        </div>
+                        <div class="pain-stat">
+                            <div class="pain-number">$1,000/mo</div>
+                            <div class="pain-label">lost revenue</div>
+                        </div>
+                    </div>
+                    <p class="pain-description">
+                        You're working an extra 18 unpaid hours every project answering "just one more question," transferring files, and providing support that should have ended weeks ago.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Relief Section -->
+            <div class="relief-container">
+                <div class="relief-section">
+                    <h2 class="relief-title">What if you could reclaim ALL of it?</h2>
+                    <div class="relief-stats">
+                        <div class="relief-stat">
+                            <div class="relief-number">$12,000</div>
+                            <div class="relief-label">Back in your pocket</div>
+                        </div>
+                        <div class="relief-stat">
+                            <div class="relief-number">216 hrs</div>
+                            <div class="relief-label">Of your time back</div>
+                        </div>
+                        <div class="relief-stat">
+                            <div class="relief-number">0</div>
+                            <div class="relief-label">Awkward conversations</div>
+                        </div>
+                    </div>
+                    
+                    <div class="relief-benefits">
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-heart"></i></div>
+                            <div class="benefit-text">
+                                <h4>Zero Burnout</h4>
+                                <p>No more resentment from unpaid work</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+                            <div class="benefit-text">
+                                <h4>Better Relationships</h4>
+                                <p>Clients respect clear boundaries</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="benefit-text">
+                                <h4>Revenue Stream</h4>
+                                <p>Turn support into paid work</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                            <div class="benefit-text">
+                                <h4>Time Freedom</h4>
+                                <p>216 hours back for your life/business</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Buttons -->
+            <div class="cta-container">
+                <div class="cta-buttons">
+                    <a href="#waitlist" class="btn btn-primary">
+                        <i class="fas fa-bolt"></i> Reclaim My $12,000
+                    </a>
+                    <a href="#problem" class="btn btn-secondary">
+                        <i class="fas fa-calculator"></i> Calculate Your Loss
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section" id="problem" style="background: rgba(248, 250, 252, 0.5);">
+        <div class="container">
+            <h2 class="section-title">Calculate Your Silent Loss</h2>
+            <p class="section-subtitle">Most freelancers don't even realize how much they're losing to unpaid offboarding work. Let's put a number on it.</p>
+            
+            <!-- Financial Loss Calculator -->
+            <div class="loss-calculator">
+                <h3 class="calculator-title">Your Personal Loss Calculator</h3>
+                <div class="calculator-inputs">
+                    <div class="input-group">
+                        <label><i class="fas fa-briefcase"></i> Projects Per Month</label>
+                        <input type="number" id="projects" value="3" min="1" max="20">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-clock"></i> Unpaid Hours Per Project</label>
+                        <input type="number" id="hours" value="18" min="1" max="100">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-dollar-sign"></i> Your Hourly Rate ($)</label>
+                        <input type="number" id="rate" value="75" min="20" max="500">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-calendar-alt"></i> Months You Work Per Year</label>
+                        <input type="number" id="months" value="10" min="1" max="12">
+                    </div>
+                </div>
+                
+                <div class="calculator-result">
+                    <h3 class="result-title">You're Losing</h3>
+                    <div class="result-amount" id="lossAmount">$40,500</div>
+                    <p class="result-description">Every single year. That's a down payment on a house, a dream vacation, or 6 months of freedom.</p>
+                </div>
+            </div>
+            
+            <!-- Emotional Impact -->
+            <h2 class="section-title">The Real Cost Isn't Just Money</h2>
+            <p class="section-subtitle">Unpaid offboarding work drains more than your bank account.</p>
+            
+            <div class="emotional-impact">
+                <div class="impact-visual">
+                    <canvas id="emotionalChart" width="400" height="400"></canvas>
+                </div>
+                
+                <div class="impact-list">
+                    <div class="impact-item">
+                        <div class="impact-icon"><i class="fas fa-brain"></i></div>
+                        <div class="impact-content">
+                            <h3>Mental Drain & Burnout</h3>
+                            <p>Constantly working beyond scope leads to resentment, exhaustion, and makes you question if freelancing is even sustainable.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-item">
+                        <div class="impact-icon"><i class="fas fa-users"></i></div>
+                        <div class="impact-content">
+                            <h3>Strained Client Relationships</h3>
+                            <p>Awkward conversations about "extra charges" damage trust and make clients less likely to refer you to others.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-item">
+                        <div class="impact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="impact-content">
+                            <h3>Stolen Time</h3>
+                            <p>Those 216 hours annually could be spent on marketing, skill development, or simply enjoying your life.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="impact-item">
+                        <div class="impact-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="impact-content">
+                            <h3>Business Growth Stagnation</h3>
+                            <p>While you're answering "one more question" for free, you could be landing your next high-paying client.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section" id="solution">
+        <div class="container">
+            <h2 class="section-title">Here's How You Reclaim Every Dollar</h2>
+            <p class="section-subtitle">ExitPortal turns your biggest freelancing weakness into a strength and revenue stream.</p>
+            
+            <div class="solution-container">
+                <div class="solution-visual">
+                    <div class="solution-visual-icon">
+                        <i class="fas fa-door-open"></i>
+                    </div>
+                    <h3>Your Professional Offboarding System</h3>
+                    <p>Turn every project ending into a smooth, profitable transition that clients love and you get paid for.</p>
+                </div>
+                
+                <div>
+                    <div class="solution-stats">
+                        <div class="solution-stat">
+                            <div class="solution-number">$12k</div>
+                            <div class="solution-label">Reclaimed annually</div>
+                        </div>
+                        <div class="solution-stat">
+                            <div class="solution-number">216h</div>
+                            <div class="solution-label">Time returned</div>
+                        </div>
+                        <div class="solution-stat">
+                            <div class="solution-number">94%</div>
+                            <div class="solution-label">Client satisfaction</div>
+                        </div>
+                        <div class="solution-stat">
+                            <div class="solution-number">0</div>
+                            <div class="solution-label">Awkward convos</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 50px;">
+                        <h3 style="font-size: 28px; margin-bottom: 30px; color: var(--text-color); font-weight: 800;">What You Get With ExitPortal</h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 25px;">
+                            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                                <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: var(--success-color); flex-shrink: 0; font-size: 18px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 20px; margin-bottom: 8px; color: var(--text-color); font-weight: 700;">Professional Client Portals</h4>
+                                    <p style="color: var(--text-secondary); font-size: 16px;">Deliver all final files, credentials, and documentation in a beautifully branded vault clients can access anytime.</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                                <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: var(--success-color); flex-shrink: 0; font-size: 18px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 20px; margin-bottom: 8px; color: var(--text-color); font-weight: 700;">Automated Support Timer</h4>
+                                    <p style="color: var(--text-secondary); font-size: 16px;">Set clear boundaries with an automated support window. Free support during, paid support after.</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; align-items: flex-start; gap: 20px;">
+                                <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center; color: var(--success-color); flex-shrink: 0; font-size: 18px;">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div>
+                                    <h4 style="font-size: 20px; margin-bottom: 8px; color: var(--text-color); font-weight: 700;">Seamless Payment System</h4>
+                                    <p style="color: var(--text-secondary); font-size: 16px;">When clients need extra support, they purchase it directly through the portal. You get paid instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Section -->
+    <section class="waitlist" id="waitlist">
+        <div class="container">
+            <h2 class="section-title">Join 4,229 Freelancers Reclaiming Their $12,000</h2>
+            <p class="section-subtitle">ExitPortal launches in October 2023. Get early access, exclusive pricing, and our free "Freelancer's Guide to Reclaiming $12,000" when you join the waitlist.</p>
+            
+            <div class="waitlist-form">
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <input type="text" class="form-input" placeholder="Your Full Name" required>
+                        <input type="email" class="form-input" placeholder="Your Email Address" required>
+                        <input type="text" class="form-input" placeholder="Your Profession" required>
+                    </div>
+                    <button type="submit" class="form-submit">
+                        <i class="fas fa-paper-plane"></i> Reclaim My $12,000
+                    </button>
+                </form>
+                
+                <div id="successMessage" style="display: none; margin-top: 50px; padding: 40px; background: rgba(255,255,255,0.15); border-radius: 20px; backdrop-filter: blur(10px);">
+                    <h3 style="color: white; margin-bottom: 20px; font-size: 28px; font-weight: 800;"><i class="fas fa-check-circle"></i> You're on the list!</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 19px; line-height: 1.6;">Check your email for the free guide and early access details. Your $12,000 reclamation journey starts now.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">
+                    <div class="logo-icon">
+                        <div class="folder-body">
+                            <div class="folder-tab"></div>
+                            <div class="portal-effect"></div>
+                        </div>
+                    </div>
+                    <div class="logo-text">ExitPortal</div>
+                </div>
+                <p class="footer-description">ExitPortal is the first platform designed to solve freelancers' #1 problem: unpaid offboarding work. We're on a mission to help freelancers reclaim $12,000+ in lost annual revenue and eliminate burnout from scope creep.</p>
+            </div>
+            
+            <div>
+                <h3 style="font-size: 18px; margin-bottom: 25px; color: var(--text-color); font-weight: 800;">Product</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Features</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Pricing</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Waitlist</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Roadmap</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 style="font-size: 18px; margin-bottom: 25px; color: var(--text-color); font-weight: 800;">Resources</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">$12k Calculator</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Freelancer Guide</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Case Studies</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Help Center</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 style="font-size: 18px; margin-bottom: 25px; color: var(--text-color); font-weight: 800;">Company</h3>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">About</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Careers</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Contact</a></li>
+                    <li style="margin-bottom: 15px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s; font-size: 16px;">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 ExitPortal. All rights reserved. Helping freelancers reclaim $12,000+ in lost revenue annually and eliminate burnout from scope creep.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Loss Calculator
+        function calculateLoss() {
+            const projects = parseInt(document.getElementById('projects').value) || 3;
+            const hours = parseInt(document.getElementById('hours').value) || 18;
+            const rate = parseInt(document.getElementById('rate').value) || 75;
+            const months = parseInt(document.getElementById('months').value) || 10;
+            
+            const monthlyLoss = projects * hours * rate;
+            const annualLoss = monthlyLoss * months;
+            
+            document.getElementById('lossAmount').textContent = '$' + annualLoss.toLocaleString();
+        }
+        
+        // Calculate on input change
+        document.querySelectorAll('.calculator-inputs input').forEach(input => {
+            input.addEventListener('input', calculateLoss);
+        });
+        
+        // Initial calculation
+        calculateLoss();
+        
+        // Emotional Impact Chart
+        const emotionalCtx = document.getElementById('emotionalChart').getContext('2d');
+        const emotionalChart = new Chart(emotionalCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Burnout', 'Lost Time', 'Strained Relationships', 'Revenue Loss'],
+                datasets: [{
+                    data: [35, 25, 20, 20],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.9)',
+                        'rgba(245, 158, 11, 0.9)',
+                        'rgba(59, 130, 246, 0.9)',
+                        'rgba(139, 92, 246, 0.9)'
+                    ],
+                    borderColor: [
+                        'rgba(239, 68, 68, 1)',
+                        'rgba(245, 158, 11, 1)',
+                        'rgba(59, 130, 246, 1)',
+                        'rgba(139, 92, 246, 1)'
+                    ],
+                    borderWidth: 3,
+                    borderRadius: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#1e293b',
+                            font: {
+                                size: 14,
+                                family: "'Inter', sans-serif",
+                                weight: '600'
+                            },
+                            padding: 25,
+                            usePointStyle: true,
+                            pointStyle: 'circle'
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'The Emotional Cost',
+                        color: '#1e293b',
+                        font: {
+                            size: 22,
+                            family: "'Inter', sans-serif",
+                            weight: '800'
+                        },
+                        padding: {
+                            bottom: 30
+                        }
+                    }
+                }
+            }
+        });
+        
+        // Waitlist Form Submission
+        const waitlistForm = document.getElementById('waitlistForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            successMessage.style.display = 'block';
+            waitlistForm.style.display = 'none';
+            
+            // Smooth scroll to success message
+            successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // In a real app, you would send the data to your server here
+            console.log('Waitlist form submitted:', {
+                name: this.querySelector('input[type="text"]').value,
+                email: this.querySelector('input[type="email"]').value,
+                profession: this.querySelectorAll('input[type="text"]')[1].value
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 8px 40px rgba(0, 0, 0, 0.08)';
+                header.style.padding = '16px 5%';
+            } else {
+                header.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.03)';
+                header.style.padding = '24px 5%';
+            }
+        });
+        
+        // Animated counter for stats
+        const statNumbers = document.querySelectorAll('.pain-number, .relief-number, .solution-number');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stat = entry.target;
+                    const targetValue = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+                    const suffix = stat.textContent.replace(/[0-9]/g, '');
+                    
+                    let currentValue = 0;
+                    const increment = targetValue / 40;
+                    const timer = setInterval(() => {
+                        currentValue += increment;
+                        if (currentValue >= targetValue) {
+                            stat.textContent = targetValue + suffix;
+                            clearInterval(timer);
+                        } else {
+                            stat.textContent = Math.floor(currentValue) + suffix;
+                        }
+                    }, 20);
+                    
+                    observer.unobserve(stat);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statNumbers.forEach(stat => observer.observe(stat));
+        
+        // Add smooth hover effects to benefit items
+        document.querySelectorAll('.benefit-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('.benefit-icon');
+                icon.style.transform = 'scale(1.1)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('.benefit-icon');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
